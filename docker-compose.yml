@@ -5,6 +5,9 @@ services:
     node-app_1: 
       restart: always
       build: .
+      ports:
+        - "80:8080"
+      
       
     
      

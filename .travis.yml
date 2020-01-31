@@ -5,7 +5,8 @@ services:
 before_install:
   - docker build -t mohammadbagwan/docker-my-visits-app .
 
-
+scripts: 
+  - docker-compose up -d
 
 deploy:
   provider: elasticbeanstalk
