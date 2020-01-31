@@ -1,0 +1,24 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t mohammadbagwan/docker-my-visits-app .
+
+script:
+  - docker run -e CI=true mohammadbagwan/docker-my-visits-app 
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-east-2"
+#   app: "Docker_My_Visits_App"
+#   env: "docker-env"
+#   bucket_name: "elasticbeanstalk-us-east-2-105253923141"
+#   bucket_path: "Docker_My_Visits_App"
+#   on:
+#     branch: master
+#   access_key_id: 
+#     secure: "$AWS_ACCESS_KEY"
+#   secret_access_key:
+#     secure: "$AWS_SECRET_KEY"
+  
