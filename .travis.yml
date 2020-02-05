@@ -3,10 +3,19 @@ services:
   - docker
 
 before_install:
-  - docker build -t mohammadbagwan/docker-my-visits-app .
+  - docker build -t mohammadbagwan/my-visits-app-react -f ./client/Dockerfile.dev ./client
 
 scripts: 
-  - docker-compose up -d
+  - docker run -e CI=true mohammadbagwan/my-visits-app-react npm run test -- --coverage
+
+after_success: 
+  - docker build -t mohammadbagwan/visits-app-client ./client
+  - docker build -t mohammadbagwan/visits-app-server ./server
+  - docker build -t mohammadbagwan/visits-app-nginx ./nginx
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push mohammadbagwan/visits-app-client
+  - docker push mohammadbagwan/visits-app-server
+  - docker push mohammadbagwan/visits-app-nginx
 
 deploy:
   provider: elasticbeanstalk
