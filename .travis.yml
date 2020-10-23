@@ -20,10 +20,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "multi-docker"
-  env: "MultiDocker-env"
+  app: "my-visits-app"
+  env: "MyVisitsApp-env"
   bucket_name: "elasticbeanstalk-us-east-2-105253923141"
-  bucket_path: "multi-docker"
+  bucket_path: "my-visits-app"
   on:
     branch: master
   access_key_id: 
