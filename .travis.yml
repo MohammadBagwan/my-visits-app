@@ -22,7 +22,7 @@ deploy:
   region: "us-east-2"
   app: "my-visits-app"
   env: "MyVisitsApp-env"
-  bucket_name: "elasticbeanstalk-us-east-2-105253923141"
+  bucket_name: "my-visits-bucket"
   bucket_path: "my-visits-app"
   on:
     branch: master
